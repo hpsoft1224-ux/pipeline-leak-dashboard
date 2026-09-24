@@ -1,1 +1,225 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pipeline Leak Detection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Pipeline Leak Detection</h1>
+
+            <p class="subtitle">
+                10 m Digital Twin + Machine Learning
+            </p>
+
+            <div class="connection-status">
+                <span id="connectionDot"></span>
+                <span id="connectionText">Checking API...</span>
+            </div>
+        </header>
+
+
+        <!-- MAIN LEAK STATUS -->
+
+        <section class="status-card">
+
+            <p class="status-label">
+                PIPELINE STATUS
+            </p>
+
+            <h2 id="prediction">
+                WAITING
+            </h2>
+
+            <p class="probability">
+                Leak Probability:
+                <strong id="probability">--</strong>
+            </p>
+
+        </section>
+
+
+        <!-- SENSOR VALUES -->
+
+        <section class="data-grid">
+
+            <div class="data-card">
+
+                <h3>Inlet Flow</h3>
+
+                <p id="qin">
+                    -- LPH
+                </p>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <h3>Outlet Flow</h3>
+
+                <p id="qout">
+                    -- LPH
+                </p>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <h3>Pressure Drop</h3>
+
+                <p id="dp">
+                    -- bar
+                </p>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <h3>Flow Deficit</h3>
+
+                <p id="deficit">
+                    -- LPH
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TEST INPUT -->
+
+        <section class="input-section">
+
+            <h2>Pipeline Sensor Input</h2>
+
+            <p>
+                Enter the current pipeline measurements
+                to run the ML leak detector.
+            </p>
+
+
+            <div class="inputs">
+
+                <div class="input-group">
+
+                    <label for="qinInput">
+                        Qin (LPH)
+                    </label>
+
+                    <input
+                        id="qinInput"
+                        type="number"
+                        value="510"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="qoutInput">
+                        Qout (LPH)
+                    </label>
+
+                    <input
+                        id="qoutInput"
+                        type="number"
+                        value="500"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="dpInput">
+                        ΔP (bar)
+                    </label>
+
+                    <input
+                        id="dpInput"
+                        type="number"
+                        value="0.0052"
+                        step="0.00001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button onclick="predictLeak()">
+                RUN LEAK DETECTION
+            </button>
+
+        </section>
+
+
+        <!-- SYSTEM INFORMATION -->
+
+        <section class="info-section">
+
+            <h2>Detection System</h2>
+
+            <div class="info-grid">
+
+                <div>
+                    <span>Pipeline Length</span>
+                    <strong>10 m</strong>
+                </div>
+
+                <div>
+                    <span>Operating Flow</span>
+                    <strong>500–520 LPH</strong>
+                </div>
+
+                <div>
+                    <span>ML Model</span>
+                    <strong>XGBoost</strong>
+                </div>
+
+                <div>
+                    <span>Detection Type</span>
+                    <strong>Leak / No Leak</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                Digital Twin Pipeline Monitoring System
+            </p>
+
+            <p>
+                ML inference powered by cloud API
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
